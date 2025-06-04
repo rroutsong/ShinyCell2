@@ -154,6 +154,7 @@ makeShinyFilesGEX <- function(
       tmpName = paste0(tmpName, "_", 1:ncol(drMat))
       colnames(drMat) = tmpName
       if(ncol(drMat) > 2){drMat = drMat[, 1:2]}  # Take first two comps only
+      browser()
       drMat = drMat[sc1meta$cellID, ]            # Ensure ordering
       sc1dimr[[iDR]] = drMat
     }
@@ -178,7 +179,7 @@ makeShinyFilesGEX <- function(
     tmpOut = tmpOut[order(nchar(names(tmpOut)))]
     sc1gene[[iAssay]] = tmpOut
   }
-  # Check (again) default.gene1 / default.gene2 / default.multigene
+  # Check (again) default.gene1 / default.gene2 / default.mulxtigene
   defGene1 = list()
   defGene2 = list()
   defGeneM = list()
