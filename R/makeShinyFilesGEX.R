@@ -142,6 +142,7 @@ makeShinyFilesGEX <- function(
     for(iDR in dimred.to.use){
       drMat = obj@reductions[[iDR]]@cell.embeddings
       if(ncol(drMat) > 2){drMat = drMat[, 1:2]}  # Take first two comps only
+      browser()
       drMat = drMat[sc1meta$cellID, ]            # Ensure ordering
       sc1dimr[[iDR]] = drMat
     }
