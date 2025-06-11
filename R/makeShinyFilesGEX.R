@@ -59,6 +59,7 @@ makeShinyFilesGEX <- function(
   default.gene1 = NA, default.gene2 = NA, default.multigene = NA, 
   default.dimred = NA, chunkSize = 500){
   ### Preprocessing and checks
+  print("makeShinyFilesGEX - Preprocessing and checks")
   # Generate defaults for gex.assay / gex.slot
   if(class(obj)[1] == "Seurat"){
     # Seurat Object
@@ -121,7 +122,7 @@ makeShinyFilesGEX <- function(
   if(is.na(default.dimred)){default.dimred = dimred.to.use[1]}
   
 
-  
+  print("makeShinyFilesGEX - object generation")
   ### Actual object generation
   # Make prefix_conf.rds / prefix_meta.rds
   sc1conf = scConf
@@ -135,6 +136,7 @@ makeShinyFilesGEX <- function(
   }
   sc1conf$ID = as.character(sc1conf$ID)     # Remove levels
   
+  print("makeShinyFilesGEX - Make prefix_dimr.rds")
   # Make prefix_dimr.rds
   sc1dimr = list()
   if(class(obj)[1] == "Seurat"){
@@ -167,6 +169,7 @@ makeShinyFilesGEX <- function(
     
   }
   
+  print("makeShinyFilesGEX - Make prefix_assay_X.h5 / prefix_gene.rds")
   # Make prefix_assay_X.h5 / prefix_gene.rds
   sc1gene = list()
   if(!dir.exists(shiny.dir)){dir.create(shiny.dir)}
@@ -226,6 +229,7 @@ makeShinyFilesGEX <- function(
     }
   }
   
+  print("makeShinyFilesGEX - Save objects")   
   # Make prefix_def.rds
   # Note that we stored the display name here
   sc1def = list()
