@@ -58,16 +58,20 @@ makeShinyFiles <- function(
   ### Check object class
   if(class(obj)[1] == "Seurat"){
     # Seurat object
+    print("start makeShinyFilesGEX")
     makeShinyFilesGEX(
       obj, scConf, assay, assay.slot, dimred.to.use,
       shiny.prefix, shiny.dir,
       default.gene1, default.gene2, default.multigene, 
       default.dimred, chunkSize)
+    print("stop makeShinyFilesGEX")
     # Seurat object with spatial data
     if(.hasSlot(obj, "images")){
       if(length(obj@images) > 0){
+        print("start makeShinyFilesSpatial")
         makeShinyFilesSpatial(
           obj, scConf, shiny.prefix, shiny.dir)
+        print("stop makeShinyFilesSpatial")
       }
     }
     # Signac object with fragment data
